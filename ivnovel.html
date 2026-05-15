@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isekai Verse - 2 Columns</title>
+    <style>
+        body {
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white; 
+            text-align: center;
+            
+            /* PENGATURAN BACKGROUND CUSTOM */
+            background-image: url('placeholder/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: #0b1a13; 
+            
+            /* Memastikan konten berada di tengah layar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Overlay gelap agar teks tetap mudah dibaca di atas gambar */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.65); 
+            z-index: -1;
+        }
+
+        /* --- STYLING 2 KOLOM --- */
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Memaksa menjadi 2 kolom */
+            gap: 40px; /* Jarak antar kolom */
+            width: 100%;
+            max-width: 700px; /* Lebar maksimal area grid */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .char-card {
+            background-color: rgba(18, 50, 36, 0.85); 
+            border: 2px solid #49CE83; 
+            border-radius: 12px; 
+            padding: 20px; 
+            text-decoration: none; 
+            color: white;
+            transition: 0.3s;
+            backdrop-filter: blur(5px); 
+            
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            
+            /* Memaksa kartu berukuran rasio 4:5 */
+            aspect-ratio: 4 / 5; 
+            box-sizing: border-box;
+            overflow: hidden; /* Mencegah gambar tumpah ke luar saat efek hover */
+        }
+
+        .char-card:hover {
+            background-color: #49CE83; 
+            transform: translateY(-8px); 
+            box-shadow: 0 10px 30px rgba(73, 206, 131, 0.4);
+        }
+
+        /* Container untuk gambar agar fleksibel mengisi sisa ruang kartu */
+        .img-container {
+            width: 100%;
+            flex-grow: 1; /* Membiarkan gambar mengisi area kosong */
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .char-card img { 
+            width: 100%; 
+            height: 100%;
+            filter: grayscale(50%);
+            transition: 0.3s;
+            object-fit: cover; 
+            display: block;
+        }
+        
+        .char-card:hover img { 
+            filter: grayscale(0%); 
+            transform: scale(1.05); 
+        }
+
+        .text-content {
+            width: 100%;
+        }
+        
+        .char-card h3 { 
+            margin: 0 0 8px 0; 
+            font-size: 22px; 
+            color: #81E6AE; /* Aksen mint yang lebih terang untuk judul */
+        }
+        
+        .char-card p { 
+            margin: 0; 
+            font-size: 15px; 
+            color: #bdc3c7; 
+        }
+
+        /* Responsif untuk layar HP yang sangat kecil (opsional) */
+        @media (max-width: 500px) {
+            .two-column-grid {
+                gap: 20px;
+                padding: 10px;
+            }
+            .char-card h3 { font-size: 18px; }
+            .char-card p { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="two-column-grid">
+        
+        <!-- KOLOM 1 -->
+        <a href="https://zaxxced.github.io/Rule-Breaker/" class="char-card">
+            <div class="img-container">
+                <img src="Image/rbwiki.png" alt="Rule Breaker">
+            </div>
+            <div class="text-content">
+                <h3>RULE BREAKER</h3>
+                <p>Wiki & Novel</p>
+            </div>
+        </a>
+
+        <!-- KOLOM 2 -->
+        <a href="Zamy.html" class="char-card">
+            <div class="img-container">
+                <img src="Image/genomwiki.png" alt="Zamy">
+            </div>
+            <div class="text-content">
+                <h3>GENOM</h3>
+                <p>Wiki & Novel</p>
+            </div>
+        </a>
+
+    </div>
+
+</body>
+</html>
