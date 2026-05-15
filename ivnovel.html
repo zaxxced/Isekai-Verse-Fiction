@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isekai Verse Novels</title>
+    <title>Isekai Verse - Full Image Scroll</title>
     <style>
         body {
             margin: 0; 
-            padding: 40px 0; /* Memberikan ruang di bagian atas dan bawah halaman */
+            padding: 40px 0; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white; 
             text-align: center;
             
             /* PENGATURAN BACKGROUND CUSTOM */
-            background-image: url('Image/background1.png');
+            background-image: url('placeholder/background.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-color: #0b1a13; 
             
-            /* Mengatur agar konten sejajar di tengah secara horizontal */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Overlay gelap agar teks tetap mudah dibaca di atas gambar */
+        /* Overlay gelap agar fokus ke kartu */
         body::before {
             content: "";
             position: fixed;
@@ -35,96 +34,95 @@
             z-index: -1;
         }
 
-        /* --- STYLING CONTAINER ATAS-BAWAH --- */
         .vertical-container {
             display: flex;
-            flex-direction: column; /* Memaksa elemen tersusun dari atas ke bawah */
-            gap: 80px; /* Jarak yang sangat lebar antar kartu saat di-scroll */
+            flex-direction: column; 
+            gap: 80px; 
             width: 100%;
             align-items: center;
         }
 
         .char-card {
-            background-color: rgba(18, 50, 36, 0.85); 
-            border: 2px solid #49CE83; 
-            border-radius: 16px; /* Sudut sedikit lebih melengkung menyesuaikan ukuran besar */
-            padding: 30px; /* Padding diperbesar */
+            /* Dibuat relative agar teks bisa melayang di dalamnya */
+            position: relative; 
+            border: none; /* Menghilangkan border */
+            border-radius: 16px; 
             text-decoration: none; 
             color: white;
-            transition: 0.4s ease-out; /* Transisi diperhalus */
-            backdrop-filter: blur(5px); 
+            transition: 0.4s ease-out; 
             
-            display: flex; 
-            flex-direction: column;
-            align-items: center;
+            /* Menghilangkan padding agar gambar full menyentuh tepi */
+            padding: 0; 
             
-            /* --- PENGATURAN UKURAN RAKSASA (HAMPIR FULL SCREEN) --- */
-            height: 75vh; /* Mengambil 85% dari tinggi layar */
-            max-height: 900px; /* Batas maksimal tinggi agar tidak aneh di monitor super besar */
+            height: 85vh; 
+            max-height: 900px; 
             width: auto; 
-            max-width: 90vw; /* Menjaga agar tidak terpotong di layar HP */
-            aspect-ratio: 4 / 5; /* Memaksa kartu berukuran rasio 4:5 */
+            max-width: 90vw; 
+            aspect-ratio: 4 / 5; 
             
             box-sizing: border-box;
             overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
         .char-card:hover {
-            background-color: #49CE83; 
-            transform: translateY(-12px); /* Efek angkat lebih terasa karena ukuran besar */
+            transform: translateY(-12px); 
             box-shadow: 0 15px 40px rgba(73, 206, 131, 0.5);
-        }
-
-        /* Container untuk gambar agar fleksibel mengisi sisa ruang kartu */
-        .img-container {
-            width: 100%;
-            flex-grow: 1; 
-            margin-bottom: 25px; /* Jarak gambar ke teks diperbesar */
-            border-radius: 12px;
-            overflow: hidden;
         }
 
         .char-card img { 
             width: 100%; 
             height: 100%;
-            filter: grayscale(40%);
-            transition: 0.4s ease-out;
             object-fit: cover; 
             display: block;
+            filter: grayscale(40%);
+            transition: 0.5s ease-out;
         }
         
         .char-card:hover img { 
             filter: grayscale(0%); 
-            transform: scale(1.05); 
+            transform: scale(1.08); /* Efek zoom gambar sedikit diperbesar saat hover */
         }
 
+        /* --- STYLING TEKS DI ATAS GAMBAR --- */
         .text-content {
+            position: absolute;
+            bottom: 0; /* Menempel di bagian bawah kartu */
+            left: 0;
             width: 100%;
+            box-sizing: border-box;
+            padding: 30px 20px; /* Jarak teks ke tepi kotak background */
+            
+            /* Latar belakang hijau sangat gelap dan transparan di belakang teks */
+            background: rgba(11, 26, 19, 0.85); 
+            backdrop-filter: blur(8px); /* Efek kaca buram */
+            
+            text-align: center;
+            z-index: 2; /* Memastikan teks selalu berada di atas gambar */
+            transition: 0.3s;
         }
         
         .char-card h3 { 
-            margin: 0 0 12px 0; 
-            font-size: 32px; /* Font judul diperbesar */
-            color: #81E6AE; 
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            margin: 0 0 10px 0; 
+            font-size: 32px; 
+            color: #81E6AE; /* Aksen mint */
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         }
         
         .char-card p { 
             margin: 0; 
-            font-size: 20px; /* Font deskripsi diperbesar */
+            font-size: 18px; 
             color: #d5dbdb; 
         }
 
-        /* Responsif untuk memastikan tampilan tetap aman di layar kecil */
         @media (max-width: 600px) {
             .char-card {
-                /* Di layar HP, lebar diprioritaskan dan tinggi mengikuti rasio 4:5 */
                 width: 90vw;
                 height: auto;
-                padding: 20px;
             }
-            .char-card h3 { font-size: 24px; }
+            .char-card h3 { font-size: 26px; }
             .char-card p { font-size: 16px; }
+            .text-content { padding: 20px 15px; }
         }
     </style>
 </head>
@@ -133,24 +131,20 @@
     <div class="vertical-container">
         
         <!-- KARTU 1 -->
-        <a href="https://drive.google.com/drive/folders/13-B_xB3Nf856-3d111qSvY5oEhJcj3VO" class="char-card">
-            <div class="img-container">
-                <img src="Image/rb.png" alt="Rule Breaker">
-            </div>
+        <a href="https://zaxxced.github.io/Rule-Breaker/" class="char-card">
+            <img src="Image/rb.png" alt="Rule Breaker">
             <div class="text-content">
                 <h3>RULE BREAKER</h3>
-                <p>Click to Read!</p>
+                <p>Wiki & Novel</p>
             </div>
         </a>
 
         <!-- KARTU 2 -->
-        <a href="https://drive.google.com/drive/folders/1HPCTP4tdtS1NUGZW3tNEkgoB9m4WEZi6" class="char-card">
-            <div class="img-container">
-                <img src="Image/genom.png" alt="Zamy">
-            </div>
+        <a href="Zamy.html" class="char-card">
+            <img src="Image/genom.png" alt="Zamy">
             <div class="text-content">
                 <h3>GENOM</h3>
-                <p>Click to Read!</p>
+                <p>Wiki & Novel</p>
             </div>
         </a>
 
