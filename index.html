@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isekai Verse Fiction - Beranda</title>
+    <style>
+        body {
+            margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white; text-align: center;
+            /* PENGATURAN BACKGROUND CUSTOM */
+            background-image: url('placeholder/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: #0d1b2a; 
+            padding-bottom: 100px; /* Ruang tambahan di bawah agar kartu tidak tertutup search bar */
+        }
+
+        /* Overlay gelap agar teks tetap mudah dibaca di atas gambar */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: -1;
+        }
+
+        nav { background-color: rgba(26, 82, 118, 0.9); padding: 20px; font-size: 20px; font-weight: bold; letter-spacing: 2px;}
+        
+        .header-title { margin: 40px 0; position: relative; }
+        .header-title h1 { font-size: 42px; /* Ukuran teks judul diperbesar */ margin-bottom: 5px; color: #5dade2; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .header-title p { color: #d5dbdb; font-size: 20px; /* Ukuran teks paragraf diperbesar */ }
+
+        .character-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; 
+            gap: 30px; /* Jarak antar kartu diperbesar */
+            padding: 20px; max-width: 1200px; /* Area konten diperlebar */
+            margin: auto;
+            position: relative;
+        }
+
+        .char-card {
+            background-color: rgba(27, 38, 49, 0.85); 
+            border: 2px solid #2e86c1;
+            border-radius: 12px; /* Border radius sedikit lebih melengkung */
+            
+            /* --- Pembaruan Ukuran Kartu --- */
+            width: 250px; /* Diperbesar (sebelumnya 180px) */
+            padding: 20px; /* Padding diperbesar */
+            
+            text-decoration: none; 
+            color: white;
+            transition: 0.3s;
+            backdrop-filter: blur(5px); 
+            display: flex; /* Tambahan untuk memastikan konten di dalamnya rapi */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .char-card:hover {
+            background-color: #2e86c1;
+            transform: translateY(-8px); /* Efek melayang sedikit lebih tinggi saat di-hover */
+        }
+
+        /* --- Pembaruan Ukuran Ikon --- */
+        .char-card img { 
+            width: 100%; /* Tetap selebar kartu */
+            border-radius: 8px; /* Sudut lebih melengkung */
+            margin-bottom: 15px; /* Jarak bawah diperbesar */
+            filter: grayscale(50%);
+            transition: 0.3s;
+            
+            /* --- Tambahan untuk ikon yang lebih besar dan proporsional --- */
+            aspect-ratio: 4 / 5; /* Membuat gambar menjadi lebih tinggi, seperti ikon (disorot di gambar) */
+            object-fit: cover; /* Pastikan gambar menutupi area dan tidak terkompresi */
+        }
+        
+        .char-card:hover img { filter: grayscale(0%); transform: scale(1.05); /* Tambahan efek zoom pada gambar saat hover */ }
+        
+        .char-card h3 { margin: 0 0 8px 0; font-size: 20px; /* Ukuran teks judul diperbesar */ }
+        .char-card p { margin: 0; font-size: 14px; /* Ukuran teks paragraf diperbesar */ color: #bdc3c7; }
+
+        /* --- STYLING PENCARIAN MELAYANG --- */
+        .search-container {
+            position: fixed;
+            bottom: 25px; 
+            left: 50%;
+            transform: translateX(-50%); 
+            width: 90%;
+            max-width: 450px; /* Kolom pencarian sedikit diperlebar mengimbangi tema */
+            z-index: 100;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 18px 25px; /* Area ketik diperbesar sedikit */
+            border-radius: 35px;
+            border: 2px solid #5dade2;
+            background-color: rgba(13, 27, 42, 0.85);
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #3498db;
+            background-color: rgba(27, 38, 49, 0.95);
+            box-shadow: 0 10px 40px rgba(52, 152, 219, 0.4);
+        }
+
+        .search-input::placeholder {
+            color: #a2a9b1;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>ISEKAI VERSE CENTRAL INFORMATION</nav>
+
+    <div class="header-title">
+        <h1>ISEKAI VERSE CENTRAL INFORMATION</h1>
+        <p>Apa yang ingin anda ketahui?</p>
+    </div>
+
+    <div class="character-grid" id="charGrid">
+        
+        <a href="Arkha.html" class="char-card">
+            <img src="placeholder/arkha_icon.png" alt="Arkha">
+            <h3>Arkha</h3>
+            <p>From Rule Breaker</p>
+        </a>
+
+        <a href="Zamy.html" class="char-card">
+            <img src="placeholder/zamy_icon.png" alt="Zamy">
+            <h3>Zamy</h3>
+            <p>From Genom</p>
+        </a>
+
+        <a href="#" class="char-card">
+            <img src="placeholder/rayas_icon.png" alt="Rayas">
+            <h3>Rayas</h3>
+            <p>From Rule Breaker</p>
+        </a>
+
+    </div>
+
+    <!-- KOLOM PENCARIAN MELAYANG -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Cari nama atau asal (Cth: Rule Breaker)...">
+    </div>
+
+    <!-- SCRIPT GABUNGAN: PENGURUTAN & PENCARIAN -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const grid = document.getElementById('charGrid');
+            const cards = Array.from(grid.querySelectorAll('.char-card'));
+            const searchInput = document.getElementById('searchInput');
+
+            // 1. Proses mengurutkan kartu dari A - Z
+            cards.sort((a, b) => {
+                const nameA = a.querySelector('h3').innerText.toUpperCase();
+                const nameB = b.querySelector('h3').innerText.toUpperCase();
+                return nameA.localeCompare(nameB);
+            });
+
+            // Memasukkan kartu yang sudah berurutan kembali ke dalam grid
+            grid.innerHTML = '';
+            cards.forEach(card => grid.appendChild(card));
+
+            // 2. Proses Pencarian (Real-time Filtering)
+            searchInput.addEventListener('input', function() {
+                const filterText = searchInput.value.toLowerCase();
+
+                // Lakukan pengecekan pada setiap kartu
+                cards.forEach(card => {
+                    const charName = card.querySelector('h3').innerText.toLowerCase();
+                    const charDesc = card.querySelector('p').innerText.toLowerCase();
+
+                    // Jika nama atau deskripsi mengandung kata yang dicari, tampilkan kartu
+                    if (charName.includes(filterText) || charDesc.includes(filterText)) {
+                        card.style.display = ""; // Munculkan
+                    } else {
+                        card.style.display = "none"; // Sembunyikan
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
