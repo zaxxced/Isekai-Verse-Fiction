@@ -14,7 +14,8 @@
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            background-color: #0d1b2a; 
+            /* Diubah ke base warna toska gelap agar menyatu */
+            background-color: #112622; 
             padding-bottom: 100px; /* Ruang tambahan di bawah agar kartu tidak tertutup search bar */
         }
 
@@ -27,60 +28,60 @@
             z-index: -1;
         }
 
-        nav { background-color: rgba(26, 82, 118, 0.9); padding: 20px; font-size: 20px; font-weight: bold; letter-spacing: 2px;}
+        /* Warna nav diubah ke toska kalem yang sedikit transparan */
+        nav { background-color: rgba(30, 105, 90, 0.9); padding: 20px; font-size: 20px; font-weight: bold; letter-spacing: 2px;}
         
         .header-title { margin: 40px 0; position: relative; }
-        .header-title h1 { font-size: 42px; /* Ukuran teks judul diperbesar */ margin-bottom: 5px; color: #5dade2; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .header-title p { color: #d5dbdb; font-size: 20px; /* Ukuran teks paragraf diperbesar */ }
+        /* Warna judul diubah ke hijau toska terang yang kalem */
+        .header-title h1 { font-size: 42px; margin-bottom: 5px; color: #4db6ac; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .header-title p { color: #d5dbdb; font-size: 20px; }
 
         .character-grid {
             display: flex; flex-wrap: wrap; justify-content: center; 
-            gap: 30px; /* Jarak antar kartu diperbesar */
-            padding: 20px; max-width: 1200px; /* Area konten diperlebar */
+            gap: 30px; 
+            padding: 20px; max-width: 1200px; 
             margin: auto;
             position: relative;
         }
 
         .char-card {
-            background-color: rgba(27, 38, 49, 0.85); 
-            border: 2px solid #2e86c1;
-            border-radius: 12px; /* Border radius sedikit lebih melengkung */
+            /* Background kartu disesuaikan dengan tone hijau */
+            background-color: rgba(28, 46, 42, 0.85); 
+            border: 2px solid #26a69a; /* Border toska */
+            border-radius: 12px; 
             
-            /* --- Pembaruan Ukuran Kartu --- */
-            width: 250px; /* Diperbesar (sebelumnya 180px) */
-            padding: 20px; /* Padding diperbesar */
+            width: 250px; 
+            padding: 20px; 
             
             text-decoration: none; 
             color: white;
             transition: 0.3s;
             backdrop-filter: blur(5px); 
-            display: flex; /* Tambahan untuk memastikan konten di dalamnya rapi */
+            display: flex; 
             flex-direction: column;
             align-items: center;
         }
 
         .char-card:hover {
-            background-color: #2e86c1;
-            transform: translateY(-8px); /* Efek melayang sedikit lebih tinggi saat di-hover */
+            background-color: #26a69a; /* Warna hover toska solid */
+            transform: translateY(-8px); 
         }
 
-        /* --- Pembaruan Ukuran Ikon --- */
         .char-card img { 
-            width: 100%; /* Tetap selebar kartu */
-            border-radius: 8px; /* Sudut lebih melengkung */
-            margin-bottom: 15px; /* Jarak bawah diperbesar */
+            width: 100%; 
+            border-radius: 8px; 
+            margin-bottom: 15px; 
             filter: grayscale(50%);
             transition: 0.3s;
             
-            /* --- Tambahan untuk ikon yang lebih besar dan proporsional --- */
-            aspect-ratio: 4 / 5; /* Membuat gambar menjadi lebih tinggi, seperti ikon (disorot di gambar) */
-            object-fit: cover; /* Pastikan gambar menutupi area dan tidak terkompresi */
+            aspect-ratio: 4 / 5; 
+            object-fit: cover; 
         }
         
-        .char-card:hover img { filter: grayscale(0%); transform: scale(1.05); /* Tambahan efek zoom pada gambar saat hover */ }
+        .char-card:hover img { filter: grayscale(0%); transform: scale(1.05); }
         
-        .char-card h3 { margin: 0 0 8px 0; font-size: 20px; /* Ukuran teks judul diperbesar */ }
-        .char-card p { margin: 0; font-size: 14px; /* Ukuran teks paragraf diperbesar */ color: #bdc3c7; }
+        .char-card h3 { margin: 0 0 8px 0; font-size: 20px; }
+        .char-card p { margin: 0; font-size: 14px; color: #bdc3c7; }
 
         /* --- STYLING PENCARIAN MELAYANG --- */
         .search-container {
@@ -89,16 +90,16 @@
             left: 50%;
             transform: translateX(-50%); 
             width: 90%;
-            max-width: 450px; /* Kolom pencarian sedikit diperlebar mengimbangi tema */
+            max-width: 450px; 
             z-index: 100;
         }
 
         .search-input {
             width: 100%;
-            padding: 18px 25px; /* Area ketik diperbesar sedikit */
+            padding: 18px 25px; 
             border-radius: 35px;
-            border: 2px solid #5dade2;
-            background-color: rgba(13, 27, 42, 0.85);
+            border: 2px solid #4db6ac; /* Border toska terang */
+            background-color: rgba(18, 38, 34, 0.85); /* Background tone hijau gelap */
             color: white;
             font-size: 16px;
             text-align: center;
@@ -110,9 +111,10 @@
         }
 
         .search-input:focus {
-            border-color: #3498db;
-            background-color: rgba(27, 38, 49, 0.95);
-            box-shadow: 0 10px 40px rgba(52, 152, 219, 0.4);
+            border-color: #4db6ac;
+            background-color: rgba(28, 46, 42, 0.95);
+            /* Glow bayangan disesuaikan ke toska */
+            box-shadow: 0 10px 40px rgba(77, 182, 172, 0.4);
         }
 
         .search-input::placeholder {
